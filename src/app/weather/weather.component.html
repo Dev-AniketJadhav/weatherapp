@@ -1,0 +1,104 @@
+
+
+<div class="container-fluid">
+ 
+  <div class="row ">
+  
+      
+    <div class="col-md-12">
+      <h3 class="text-center my-4 ">Search for Weather:</h3>
+      <form
+        [formGroup]="weatherSearchForm"
+        (ngSubmit)="sendToAPIXU(weatherSearchForm.value)"
+      >
+        <div class="form-group">
+          <input
+            class="form-control searchbar"
+            type="text"
+            id="weatherLocation"
+            aria-describedby="weatherLocation"
+            placeholder="Please input a Location"
+            formControlName="location"
+          />
+          
+        </div>
+        <div class="text-center mt-4 mb-4 " id="div-box">
+          <button type="submit" class="btn btn-success btn-md">
+            Search for the weather
+          </button>
+        </div>
+      </form>
+    
+   
+  
+</div>
+
+<div class="container-fluid">
+  <div class="row d-flex align-content-end flex-wrap">
+    <div class="col-sm-4  col-md-4  mt-4">
+      <div class="card "*ngIf="this.weatherData">
+        <div class="card-body ">
+          <h5 class="card-title"><img src="https://img.icons8.com/?id=15361&size=2x&color=000000" style="width:10%;"> UV INDEX</h5>
+          <p class="card-text">  
+            {{ this.weatherData?.current.uv_index }}</p>
+        
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-4 mt-4">
+      <div class="card" *ngIf="this.weatherData" >
+        <div class="card-body">
+          <h5 class="card-title">
+            <img src="https://img.icons8.com/?id=LSiA0D7qJ1zr&size=2x&color=000000" style="width: 10%;">
+            Temperature in Degrees Celsius:</h5>
+          <p class="card-text">{{ this.weatherData?.current.temperature }}</p> 
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4  col-md-4  mt-4">
+      <div class="card"*ngIf="this.weatherData">
+        <div class="card-body">
+          <h5 class="card-title"><img src="https://img.icons8.com/?id=39462&size=2x&color=000000" style="width: 10%;">
+            Feels like in Degrees Celsius:</h5>
+          <p class="card-text">
+            {{ this.weatherData?.current.feelslike }}</p> 
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4  col-md-4  mt-4">
+      <div class="card"*ngIf="this.weatherData">
+        <div class="card-body">
+          <h5 class="card-title"><img src="https://img.icons8.com/?id=l1IKLwu7b70d&size=2x&color=000000" style="width: 10%;">
+            cloudcover:</h5>
+          <p class="card-text">
+            {{ this.weatherData?.current.cloudcover }}</p> 
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4  mt-4">
+      <div class="card"*ngIf="this.weatherData">
+        <div class="card-body">
+          <h5 class="card-title">
+            <img src="https://img.icons8.com/?id=34707&size=2x&color=000000" style="width: 10%;">
+            Location Searched:</h5>
+          <p class="card-text"> {{ this.weatherData?.location.name }},
+            {{ this.weatherData?.location.country }}.</p> 
+        </div>
+      </div>
+    </div>
+   
+    <div class="col-sm-4  mt-4">
+      <div class="card"*ngIf="this.weatherData">
+        <div class="card-body">
+          <h5 class="card-title">
+            <img src="https://img.icons8.com/?id=63250&size=2x&color=000000" style="width: 10%;" >
+            Location Time:</h5>
+          <p class="card-text"> {{ this.weatherData?.location.localtime }}</p> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
